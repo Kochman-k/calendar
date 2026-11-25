@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Good Deal — Christmas card carousel</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Inter+Tight:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#000}
+a{color:#fff;text-decoration:none}a:hover{color:#FFD27A}
+button{font-family:inherit;color:inherit}
+button:focus-visible,a:focus-visible{outline:2px solid #FFD27A;outline-offset:3px}
+.fl{position:absolute;top:-24px;border-radius:50%;background:radial-gradient(circle,#fff 0,rgba(255,255,255,.8) 38%,rgba(255,255,255,0) 72%);pointer-events:none;animation:fall linear infinite}
+@keyframes fall{0%{transform:translate3d(0,0,0)}25%{transform:translate3d(14px,26vh,0)}50%{transform:translate3d(-12px,52vh,0)}75%{transform:translate3d(12px,78vh,0)}100%{transform:translate3d(0,max(106vh,1060px),0)}}
+.cw{animation:sw 5s ease-in-out infinite;transform-origin:50% 0}
+.cw:hover{animation-duration:1.8s !important}
+@keyframes sw{0%,100%{transform:rotate(-1.3deg)}50%{transform:rotate(1.3deg)}}
+.dz{animation:sw2 4s ease-in-out infinite;transform-origin:50% 0}
+@keyframes sw2{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.bl{animation:tw 2.4s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:1}50%{opacity:.3}}
+.flip{transition:transform .9s cubic-bezier(.25,1.25,.4,1);transform-style:preserve-3d}
+.face,.face0{position:absolute;inset:0;border-radius:26px;overflow:hidden;isolation:isolate}.off,.off *{pointer-events:none !important}.face{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.nav a{opacity:.92}.nav a:hover{opacity:1}
+.ctl:hover:not(:disabled){background:rgba(255,255,255,.16) !important}.ctl:disabled{opacity:.3;cursor:default !important}
+.kick{transform:rotate(calc(var(--tilt,0deg) * var(--amp,1)));transition:transform .35s ease-out;transform-origin:50% 0}.k2{--amp:1.8}.kc{--amp:.7}
+.fwd{--d:1}.bwd{--d:-1}.ka .kick{animation:ka 1.9s ease-out}.kb .kick{animation:kb 1.9s ease-out}
+@keyframes ka{16%{transform:rotate(calc(var(--d) * var(--amp,1) * -7deg))}38%{transform:rotate(calc(var(--d) * var(--amp,1) * 4deg))}58%{transform:rotate(calc(var(--d) * var(--amp,1) * -2deg))}78%{transform:rotate(calc(var(--d) * var(--amp,1) * .8deg))}}
+@keyframes kb{16%{transform:rotate(calc(var(--d) * var(--amp,1) * -7deg))}38%{transform:rotate(calc(var(--d) * var(--amp,1) * 4deg))}58%{transform:rotate(calc(var(--d) * var(--amp,1) * -2deg))}78%{transform:rotate(calc(var(--d) * var(--amp,1) * .8deg))}}
+@media (max-width:760px){.hdr{grid-template-columns:1fr auto !important;padding:20px !important}.nav{grid-column:1/-1;justify-content:center !important;gap:20px !important}.gd{height:110px !important}}
+@keyframes pop{from{opacity:0;transform:translateY(18px) scale(.96)}}@keyframes fade{from{opacity:0}}
+.sha{animation:sha .5s ease}.shb{animation:shb .5s ease}
+@keyframes sha{20%,60%{transform:translateX(-9px)}40%,80%{transform:translateX(9px)}}@keyframes shb{20%,60%{transform:translateX(-9px)}40%,80%{transform:translateX(9px)}}
+@keyframes popin{from{opacity:0;transform:scale(.2) rotate(-35deg)}}@keyframes nudge{0%{opacity:0;transform:translateY(8px)}12%,82%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(255,201,77,.7)}50%{box-shadow:0 0 0 8px rgba(255,201,77,0)}}
+@media (max-width:760px){.ctlrow{grid-template-columns:auto auto !important;justify-content:center;gap:12px !important}.ctlpad,.hlabel{display:none}.ctlrow .ctl{padding:0 !important;width:54px}.mid{gap:12px !important}.cnt{width:150px !important}.cnt div{font-size:13px !important}}
+@media (max-width:760px){.fl:nth-child(3n),.fl:nth-child(3n+1){display:none}}
+@media (prefers-reduced-motion:reduce){.fl,.cw,.dz,.bl,.kick{animation:none !important}.flip{transition:none}}
+</style>
+</helmet>
+<div style="position: relative; overflow: hidden; min-height: 100vh; background: radial-gradient(120% 60% at 50% 100%, #0B1626 0%, #000 60%); color: #fff; font-family: Inter, system-ui, sans-serif; display: flex; flex-direction: column">
+
+  <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; pointer-events: none">
+    <sc-for list="{{ snowBack }}" as="f" hint-placeholder-count="20">
+      <i class="fl" style="left: {{f.x}}%; width: {{f.s}}px; height: {{f.s}}px; opacity: {{f.o}}; animation-duration: {{f.d}}s; animation-delay: -{{f.dl}}s"></i>
+    </sc-for>
+  </div>
+
+  <header class="hdr" style="position: relative; z-index: 20; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; padding: 28px 56px 0">
+    <a href="#" aria-label="Synerise" style="justify-self: start; display: flex">
+      <img src="./assets/151bf49011d93d213145ab10ae0ffd85.png" alt="Synerise" style="height: 28px; width: auto; display: block">
+    </a>
+    <a href="#" aria-label="The Good Deal — home" style="display: flex">
+      <img class="gd" src="./assets/d9aaf4c012c425845981224fa1b5a849.png" alt="The Good Deal" style="height: 150px; width: auto; display: block">
+    </a>
+    <nav class="nav" aria-label="Main" style="justify-self: end; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 44px; font-size: 18px; font-weight: 400; letter-spacing: -0.01em">
+      <a href="#">Calendar</a>
+      <a href="#">My auctions</a>
+      <a href="#">How it works</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <section aria-label="Advent calendar" onPointerDown="{{ down }}" onPointerMove="{{ move }}" onPointerUp="{{ up }}" onPointerCancel="{{ up }}" onClickCapture="{{ swallow }}" onWheel="{{ wheel }}" style="position: relative; z-index: 10; cursor: grab; height: 560px; margin-top: 10px; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none">
+    <div aria-hidden="true" style="position: absolute; left: 50%; top: 40px; width: 640px; height: 540px; margin-left: -320px; background: radial-gradient(closest-side, rgba(255,200,120,.16), transparent); pointer-events: none"></div>
+
+    <div ref="{{ trackRef }}" class="{{trackCls}}" style="position: absolute; left: 50%; top: 0; height: 100%; width: {{trackW}}px; transform: translateX(-{{offset}}px); transition: transform .65s cubic-bezier(.22,.8,.2,1)">
+      <svg aria-hidden="true" width="{{trackW}}" height="120" style="position: absolute; left: 0; top: 0; overflow: visible">
+        <path d="{{rope}}" fill="none" stroke="#45584A" stroke-width="2.6" stroke-linecap="round"></path>
+        <path d="{{rope}}" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1" stroke-dasharray="3 5"></path>
+      </svg>
+
+      <sc-for list="{{ decor }}" as="d" hint-placeholder-count="6">
+        <div class="kick k2" aria-hidden="true" style="position: absolute; left: {{d.x}}px; top: {{d.y}}px; width: 2px; height: {{d.len}}px; margin-left: -1px; animation-delay: {{d.kd}}s">
+        <div class="dz" style="position: absolute; inset: 0; animation-duration: {{d.dur}}s; animation-delay: -{{d.dl}}s">
+          <div style="position: absolute; left: 0; top: 0; width: 1.2px; height: 100%; background: rgba(220,228,236,.45)"></div>
+          <sc-if value="{{ d.isBall }}" hint-placeholder-val="{{ true }}">
+            <div style="position: absolute; left: -5px; top: {{d.len}}px; width: 11px; height: 7px; border-radius: 2px; background: linear-gradient(#F6D88A, #A87A22)"></div>
+            <div style="position: absolute; left: {{d.bl}}px; top: {{d.bt}}px; width: {{d.size}}px; height: {{d.size}}px; border-radius: 50%; background: radial-gradient(circle at 34% 30%, rgba(255,255,255,.85) 0, {{d.c}} 32%, {{d.c2}} 100%); box-shadow: 0 6px 18px rgba(0,0,0,.5)"></div>
+          </sc-if>
+          <sc-if value="{{ d.isStar }}" hint-placeholder-val="{{ false }}">
+            <svg width="30" height="30" viewBox="0 0 24 24" style="position: absolute; left: -15px; top: {{d.len}}px; filter: drop-shadow(0 0 8px rgba(255,200,80,.7))"><path d="M12 2.5l2.8 6 6.5.7-4.9 4.4 1.4 6.4L12 16.8 6.2 20l1.4-6.4L2.7 9.2l6.5-.7z" fill="#FFC94D" stroke="#B8801C" stroke-width=".8" stroke-linejoin="round"></path></svg>
+          </sc-if>
+          <sc-for list="{{ d.bulbs }}" as="b" hint-placeholder-count="0">
+            <div style="position: absolute; left: -4px; top: {{b.y}}px">
+              <div style="width: 7px; height: 5px; margin-left: .5px; border-radius: 1.5px; background: #1E2A22"></div>
+              <div class="bl" style="width: 8px; height: 12px; border-radius: 50% 50% 46% 46%; background: {{b.c}}; box-shadow: 0 0 7px 2px {{b.c}}, 0 0 20px 5px {{b.g}}; animation-duration: {{b.du}}s; animation-delay: -{{b.dl}}s"></div>
+            </div>
+          </sc-for>
+        </div>
+        </div>
+      </sc-for>
+
+      <sc-for list="{{ cards }}" as="c" hint-placeholder-count="4">
+        <div class="{{c.kCls}}" style="position: absolute; left: {{c.left}}px; top: 36px; width: 320px; height: 500px; animation-delay: {{c.kd}}s">
+        <div class="{{c.cwCls}}" style="position: absolute; inset: 0; transform-origin: 50% 0; animation-duration: {{c.dur}}s; animation-delay: -{{c.dl}}s">
+          <div aria-hidden="true" style="position: absolute; left: 155px; top: 0; width: 10px; height: 15px; border-radius: 3px; background: linear-gradient(90deg, #8D96A3, #E9EDF2 45%, #7A838F); box-shadow: 0 2px 4px rgba(0,0,0,.6)"></div>
+          <div aria-hidden="true" style="position: absolute; left: 159.5px; top: 14px; width: 1.2px; height: 40px; background: rgba(225,232,240,.6)"></div>
+          <div style="position: absolute; left: 0; top: 50px; width: 320px; height: 420px; perspective: 1500px; transform: scale({{c.sc}}); transform-origin: 50% 0; transition: transform .6s cubic-bezier(.22,.8,.2,1)">
+            <div class="{{c.flipCls}}" style="position: relative; width: 100%; height: 100%; transform: rotateY({{c.rot}}deg)">
+
+              <div class="{{c.frontCls}}" style="background: #F6F1EC; color: #0B0B0C; box-shadow: 0 28px 60px rgba(0,0,0,.6)">
+                <button type="button" onClick="{{ c.flip }}" aria-label="{{c.frontLabel}}" style="position: absolute; inset: 0; border: 0; padding: 0; background: transparent; cursor: pointer"></button>
+                <div aria-hidden="true" style="position: absolute; left: 153px; top: 10px; width: 14px; height: 14px; border-radius: 50%; background: #05070B; box-shadow: inset 0 1px 2px rgba(0,0,0,.8), 0 0 0 2px rgba(0,0,0,.08)"></div>
+                <div style="position: absolute; inset: 0; padding: 38px 24px 24px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; pointer-events: none">
+                  <sc-if value="{{ c.isDay }}" hint-placeholder-val="{{ true }}">
+                    <div style="font-size: 30px; font-weight: 600; letter-spacing: -0.025em">December</div>
+                    <div style="margin-top: 6px; font-family: 'Inter Tight', Inter, sans-serif; font-size: 212px; font-weight: 800; line-height: .9; letter-spacing: -0.075em; padding-right: .06em">{{c.day}}</div>
+                    <div style="margin-top: 8px; font-size: 16px; font-weight: 500; letter-spacing: .04em">{{c.wdUp}}</div>
+                  </sc-if>
+                  <sc-if value="{{ c.isIntro }}" hint-placeholder-val="{{ false }}">
+                    <div style="font-size: 13px; font-weight: 600; letter-spacing: .14em; color: #5E5953">THE GOOD DEAL</div>
+                    <div style="margin-top: auto; font-family: 'Inter Tight', Inter, sans-serif; font-size: 68px; font-weight: 800; line-height: .92; letter-spacing: -0.05em; text-align: center">How it<br>works</div>
+                    <div style="margin-top: 14px; font-size: 16px; font-weight: 500; color: #5E5953">1–24 December</div>
+                  </sc-if>
+                  <div style="margin-top: auto; position: relative; z-index: 2; display: flex; align-items: center; gap: 10px; pointer-events: auto">
+                    <sc-if value="{{ c.isLocked }}" hint-placeholder-val="{{ true }}">
+                      <span style="width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid rgba(11,11,12,.2); background: #fff; display: flex; align-items: center; justify-content: center; flex: none">
+                        <svg role="img" aria-label="Locked" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"></path><path d="M12 14.5v2.5"></path></svg>
+                      </span>
+                    </sc-if>
+                    <sc-if value="{{ c.isOpen }}" hint-placeholder-val="{{ false }}">
+                      <span style="width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid rgba(11,11,12,.12); background: #FFC94D; display: flex; align-items: center; justify-content: center; flex: none">
+                        <svg role="img" aria-label="Unlocked" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"></rect><path d="M8 10.5V7.5a4 4 0 0 1 7.6-1.8"></path><path d="M12 14.5v2.5"></path></svg>
+                      </span>
+                    </sc-if>
+                    <button type="button" onClick="{{ c.flip }}" style="height: 48px; padding: 0 20px 0 24px; border: 0; border-radius: 999px; background: {{c.btnBg}}; color: {{c.btnFg}}; animation: {{c.btnAnim}}; font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer">Discover<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></button>
+                  </div>
+                </div>
+                <sc-if value="{{ c.isNew }}" hint-placeholder-val="{{ false }}">
+                  <span style="position: absolute; left: 16px; top: 16px; display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 999px; background: #0B0B0C; color: #FFC94D; font-size: 11px; font-weight: 700; letter-spacing: .08em; pointer-events: none"><span style="width: 6px; height: 6px; border-radius: 50%; background: #FFC94D"></span>NEW</span>
+                </sc-if>
+                <sc-if value="{{ c.nudged }}" hint-placeholder-val="{{ false }}">
+                  <div role="status" style="position: absolute; z-index: 3; left: 24px; right: 24px; bottom: 86px; display: flex; align-items: center; justify-content: center; gap: 8px; height: 44px; border-radius: 999px; background: rgba(11,11,12,.9); color: #fff; font-size: 14px; font-weight: 600; pointer-events: none; animation: nudge 2.2s ease both">
+                    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFC94D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"></path></svg>Opens on {{c.day}} December
+                  </div>
+                </sc-if>
+              </div>
+
+              <sc-if value="{{ c.near }}" hint-placeholder-val="{{ true }}">
+              <div class="{{c.backCls}}" style="transform: rotateY(180deg); background: linear-gradient(135deg, #F4E1FF 0%, #D6F2FF 30%, #FFF5D2 55%, #FFDAE8 78%, #E3DEFF 100%); color: #15151B; box-shadow: 0 28px 60px rgba(0,0,0,.6)">
+                <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.75) 45%, transparent 60%), repeating-linear-gradient(60deg, rgba(255,255,255,0) 0 14px, rgba(255,255,255,.18) 14px 15px)"></div>
+                <button type="button" onClick="{{ c.flip }}" aria-label="{{c.backLabel}}" style="position: absolute; inset: 0; border: 0; padding: 0; background: transparent; cursor: pointer"></button>
+                <div style="position: absolute; inset: 0; padding: 28px 24px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px; pointer-events: none">
+                  <span style="font-size: 11px; font-weight: 600; letter-spacing: .14em; color: #4A4A57">THE GOOD DEAL · {{c.kicker}}</span>
+                  <h3 style="margin: 4px 0 0; font-family: 'Inter Tight', Inter, sans-serif; font-size: 32px; font-weight: 800; line-height: 1.02; letter-spacing: -0.035em">{{c.pt}}</h3>
+                  <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #33333D">{{c.ps}}</p>
+                  <button type="button" onClick="{{ c.info }}" style="pointer-events: auto; position: relative; margin-top: auto; height: 48px; width: 100%; border: 0; border-radius: 999px; background: #15151B; color: #fff; font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer">More information<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></button>
+                </div>
+              </div>
+              </sc-if>
+
+            </div>
+            <sc-if value="{{ c.showIcon }}" hint-placeholder-val="{{ false }}">
+              <img src="{{c.icon}}" alt="{{c.iconAlt}}" draggable="false" style="position: absolute; left: {{c.ix}}px; top: {{c.iy}}px; width: {{c.isz}}px; height: auto; transform: rotate({{c.ir}}deg); filter: drop-shadow(0 16px 18px rgba(0,0,0,.35)); pointer-events: none; animation: popin .7s cubic-bezier(.2,1.5,.4,1) .55s both">
+            </sc-if>
+            <div aria-hidden="true" style="position: absolute; inset: 0; border-radius: 26px; background: #000; opacity: {{c.dim}}; transition: opacity .6s ease; pointer-events: none"></div>
+          </div>
+        </div>
+        </div>
+      </sc-for>
+
+      
+<sc-for list="{{ lights }}" as="b" hint-placeholder-count="12">
+        <div aria-hidden="true" style="position: absolute; left: {{b.x}}px; top: {{b.y}}px; transform: rotate({{b.r}}deg); transform-origin: 50% 0">
+          <div class="kick" style="animation-delay: {{b.kd}}s">
+          <div style="width: 7px; height: 5px; margin-left: -3.5px; border-radius: 1.5px; background: #1E2A22"></div>
+          <div class="bl" style="width: 9px; height: 13px; margin-left: -4.5px; border-radius: 50% 50% 46% 46%; background: {{b.c}}; box-shadow: 0 0 8px 2px {{b.c}}, 0 0 24px 6px {{b.g}}; animation-duration: {{b.du}}s; animation-delay: -{{b.dl}}s"></div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div aria-hidden="true" style="position: absolute; left: 0; top: 0; bottom: 0; width: 8%; background: linear-gradient(90deg, #000, rgba(0,0,0,0)); pointer-events: none"></div>
+    <div aria-hidden="true" style="position: absolute; right: 0; top: 0; bottom: 0; width: 8%; background: linear-gradient(270deg, #000, rgba(0,0,0,0)); pointer-events: none"></div>
+  </section>
+
+  <nav aria-label="Carousel controls" class="ctlrow" style="position: relative; z-index: 20; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 28px; padding: 18px 20px 8px">
+    <button class="ctl" type="button" onClick="{{ home }}" disabled="{{ atStart }}" aria-label="Home — back to the start" style="justify-self: end; height: 54px; padding: 0 22px 0 18px; gap: 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s; font-size: 15px; font-weight: 500; color: #fff">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"><path d="M11.75,13L12.25,13A2.75,2.75 0 0,1 15,15.75L15,21L9,21L9,15.75A2.75,2.75 0 0,1 11.75,13Z"></path><path d="M3,18V10.95971a4.5,4.5,0,0,1,1.68885-3.5139L8.8765,4.09567a5,5,0,0,1,6.247,0l4.18765,3.35013A4.5,4.5,0,0,1,21,10.9597V18a3,3,0,0,1-3,3H6A3,3,0,0,1,3,18Z"></path></svg>
+      <span class="hlabel">Home</span>
+    </button>
+    <div class="mid" style="display: flex; align-items: center; gap: 28px">
+      <button class="ctl" type="button" onClick="{{ prev }}" disabled="{{ atStart }}" aria-label="Previous day" style="width: 54px; height: 54px; flex: none; border-radius: 50%; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s">
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"><path d="M5.75,12L19,12"></path><path d="M10,7L5,12L10,17"></path></svg>
+      </button>
+      <div class="cnt" style="display: flex; flex-direction: column; align-items: center; gap: 10px; width: 220px">
+        <div style="font-size: 15px; font-weight: 600; letter-spacing: .02em; font-variant-numeric: tabular-nums; white-space: nowrap"><span>{{cur}}</span><span style="opacity: .45">{{curSub}}</span></div>
+        <div style="width: 100%; height: 2px; border-radius: 2px; background: rgba(255,255,255,.18); overflow: hidden">
+          <div style="height: 100%; width: {{pct}}%; background: linear-gradient(90deg, #FFD27A, #FF5A5F); transition: width .6s ease"></div>
+        </div>
+      </div>
+      <button class="ctl" type="button" onClick="{{ next }}" disabled="{{ atEnd }}" aria-label="Next day" style="width: 54px; height: 54px; flex: none; border-radius: 50%; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s">
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"><path d="M18.25,12L5,12"></path><path d="M14,17L19,12L14,7"></path></svg>
+      </button>
+    </div>
+    <span aria-hidden="true" class="ctlpad"></span>
+  </nav>
+  <p style="position: relative; z-index: 20; margin: 0 0 32px; text-align: center; font-size: 12.5px; color: rgba(255,255,255,.6)">Swipe to browse · tap a card to flip it</p>
+
+  <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 30; pointer-events: none">
+    <sc-for list="{{ snowFront }}" as="f" hint-placeholder-count="6">
+      <i class="fl" style="left: {{f.x}}%; width: {{f.s}}px; height: {{f.s}}px; opacity: {{f.o}}; animation-duration: {{f.d}}s; animation-delay: -{{f.dl}}s"></i>
+    </sc-for>
+  </div>
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; font-family: Inter, system-ui, sans-serif">
+      <button type="button" onClick="{{ closeModal }}" aria-label="Close" tabindex="-1" style="position: absolute; inset: 0; border: 0; padding: 0; background: rgba(0,0,0,.66); cursor: pointer; animation: fade .3s ease"></button>
+      <div role="dialog" aria-modal="true" aria-labelledby="prize-title" onKeyDown="{{ modalKey }}" style="position: relative; width: 100%; max-width: 560px; max-height: calc(100vh - 40px); overflow: auto; border-radius: 28px; background: linear-gradient(135deg, #F4E1FF 0%, #D6F2FF 30%, #FFF5D2 55%, #FFDAE8 78%, #E3DEFF 100%); color: #15151B; padding: 32px 32px 28px; box-sizing: border-box; box-shadow: 0 40px 100px rgba(0,0,0,.6); animation: pop .4s cubic-bezier(.2,1.2,.4,1)">
+        <button type="button" ref="{{ closeRef }}" onClick="{{ closeModal }}" aria-label="Close" style="position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(21,21,27,.14); background: rgba(255,255,255,.7); display: flex; align-items: center; justify-content: center; cursor: pointer">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15151B" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
+        </button>
+        <div style="display: flex; flex-direction: column; gap: 16px">
+          <span style="font-size: 11px; font-weight: 600; letter-spacing: .14em; color: #4A4A57; padding-right: 56px">{{m.kicker}}</span>
+          <h2 id="prize-title" style="margin: 0; padding-right: 40px; font-family: 'Inter Tight', Inter, sans-serif; font-size: 38px; font-weight: 800; line-height: 1.02; letter-spacing: -0.035em">{{m.title}}</h2>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #2A2A33">{{m.p1}}</p>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #2A2A33">{{m.p2}}</p>
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 4px">
+            <sc-for list="{{ m.details }}" as="r" hint-placeholder-count="2">
+              <div style="display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; border-radius: 16px; background: rgba(255,255,255,.62)">
+                <span style="font-size: 12px; color: #4A4A57">{{r.k}}</span>
+                <span style="font-size: 16px; font-weight: 700">{{r.v}}</span>
+              </div>
+            </sc-for>
+          </div>
+          <button type="button" onClick="{{ closeModal }}" style="margin-top: 6px; height: 50px; border: 0; border-radius: 999px; background: #15151B; color: #fff; font-size: 15px; font-weight: 600; cursor: pointer">Got it</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"snow":{"editor":"range","min":0,"max":160,"step":10,"default":80,"section":"Atmosphere"},"$preview":{"width":1440,"height":980}}'>
+class Component extends DCLogic {
+  buildStatic(amount) {
+    const N = 25, LEAD = 3, PITCH = 390, PIN = 40;
+    const T = N + LEAD * 2;
+    let seed = 7;
+    const rnd = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+    const r2 = (v) => Math.round(v * 100) / 100;
+
+    // rope: swags between pins
+    const pts = [];
+    for (let k = -1; k <= T; k++) pts.push({ x: k * PITCH + PITCH / 2, sag: 30 + rnd() * 10 });
+    let rope = 'M' + pts[0].x + ' ' + PIN;
+    const swags = [];
+    for (let k = 0; k < pts.length - 1; k++) {
+      const a = pts[k], b = pts[k + 1];
+      const cx = (a.x + b.x) / 2, cy = PIN + a.sag * 2;
+      rope += ' Q' + cx + ' ' + cy + ' ' + b.x + ' ' + PIN;
+      swags.push({ a, b, cx, cy });
+    }
+    const bulbColors = [['#FFC857', 'rgba(255,200,87,.45)'], ['#FF4D5E', 'rgba(255,77,94,.45)'], ['#3DDC97', 'rgba(61,220,151,.4)'], ['#8FD3FF', 'rgba(143,211,255,.45)'], ['#FFF1C9', 'rgba(255,241,201,.45)']];
+    const lights = [];
+    let ci = 0;
+    swags.forEach((s) => {
+      [0.25, 0.5, 0.75].forEach((t) => {
+        const u = 1 - t;
+        const x = u * u * s.a.x + 2 * u * t * s.cx + t * t * s.b.x;
+        const y = u * u * PIN + 2 * u * t * s.cy + t * t * PIN;
+        const col = bulbColors[ci++ % bulbColors.length];
+        lights.push({ x: r2(x), y: r2(y - 2), r: r2((rnd() - 0.5) * 30), c: col[0], g: col[1], du: r2(1.6 + rnd() * 2.6), dl: r2(rnd() * 4), kd: r2(0.02 + rnd() * 0.1) });
+      });
+    });
+
+    // hanging decorations between cards
+    const ballCols = [['#E0313F', '#6E0E17'], ['#E8B23A', '#7A5310'], ['#1E9E6A', '#0B4B31'], ['#7FC4F0', '#245C88'], ['#D9DEE6', '#6B7380']];
+    const decor = [];
+    swags.forEach((s, k) => {
+      const r = rnd();
+      if (r > 0.62) return;
+      const x = r2((s.a.x + s.b.x) / 2), y = r2(PIN + (s.cy - PIN) / 2);
+      const len = Math.round(40 + rnd() * 120);
+      const base = { x, y, len, dur: r2(3 + rnd() * 2.5), dl: r2(rnd() * 5), kd: r2(0.04 + rnd() * 0.1), isBall: false, isStar: false, bulbs: [] };
+      if (r < 0.3) {
+        const bc = ballCols[k % ballCols.length];
+        const size = Math.round(24 + rnd() * 10);
+        decor.push({ ...base, isBall: true, c: bc[0], c2: bc[1], size, bl: r2(-size / 2 + 1), bt: len + 5 });
+      } else if (r < 0.48) {
+        const bulbs = [];
+        for (let yb = 14; yb < len; yb += 24) {
+          const col = bulbColors[ci++ % bulbColors.length];
+          bulbs.push({ y: yb, c: col[0], g: col[1], du: r2(1.4 + rnd() * 2.4), dl: r2(rnd() * 4) });
+        }
+        decor.push({ ...base, len: len + 12, bulbs });
+      } else {
+        decor.push({ ...base, isStar: true });
+      }
+    });
+
+    const anim = [];
+    for (let i = 0; i < N; i++) anim.push({ dur: r2(4.4 + rnd() * 2.6), dl: r2(rnd() * 6), kd: r2(rnd() * 0.08) });
+
+    // snow
+    const flake = (big) => ({
+      x: r2(rnd() * 100), s: r2(big ? 9 + rnd() * 9 : 3 + rnd() * 4), o: r2(big ? 0.45 + rnd() * 0.35 : 0.4 + rnd() * 0.5),
+      d: r2(big ? 8 + rnd() * 6 : 14 + rnd() * 14), dl: r2(rnd() * 28)
+    });
+    const snowBack = [], snowFront = [];
+    for (let k = 0; k < amount; k++) snowBack.push(flake(false));
+    for (let k = 0; k < Math.round(amount / 4); k++) snowFront.push(flake(true));
+
+    return { amount, rope, lights, decor, anim, snowBack, snowFront };
+  }
+
+  renderVals() {
+    const st = this.state || {};
+    const N = 25, LEAD = 3, PITCH = 390, CW = 320;
+    const T = N + LEAD * 2;
+    const index = st.index ?? 1;
+    const flipped = st.flipped || {};
+    const revealed = st.revealed || {};
+    const nudge = st.nudge;
+    const UNLOCKED = 4;
+    const ICONS = [
+      { src: './assets/6125f6f61297d4a50d7e7961152f00eb.webp', ar: 1.076, alt: 'Smiling basketball wearing a headband' },
+      { src: './assets/1d09ed5867b9d45eb97dcf6a3d646d58.webp', ar: 0.911, alt: 'Black camera with a colourful lens' },
+      { src: './assets/ac25f4c84ecad8a1dc4c4b49f972a373.webp', ar: 0.99, alt: 'Cheeky running shoe' },
+      { src: './assets/f3bd6684a3f3005d2d110f36683fd592.webp', ar: 1.137, alt: 'Bottle and glass of red wine with grapes' }
+    ];
+    const amount = this.props.snow ?? 80;
+    if (!this._s || this._s.amount !== amount) this._s = this.buildStatic(amount);
+    const S = this._s;
+    const r2 = (v) => Math.round(v * 100) / 100;
+    const offsetOf = (n) => (n + LEAD) * PITCH + PITCH / 2;
+    const clamp = (n) => Math.max(0, Math.min(N - 1, n));
+
+    // sample prize copy — replace with the real prizes
+    const PR = [
+      ['24 days, 24 prize draws', 'Every day from 1 to 24 December a new prize unlocks. Open the day\'s card, join the draw and check back to see if you won.', 'The Good Deal is an advent calendar with a prize draw behind every door. Each day at midnight a new card unlocks and reveals the prize of the day.', 'Tap Discover on the day\'s card, read about the prize and join the draw. Winners are picked at random at the end of each day and notified by email. You can take part in every draw, so come back daily.', [['Dates', '1–24 December'], ['Prize draws', '24']]],
+      ['Courtside basketball tickets', 'Two courtside seats for a basketball game of your choice, plus a signed match ball.', 'Feel the energy of the game up close with two courtside seats at a home game of your choice this season.', 'The prize also includes a match ball signed by the team and a meet-and-greet with one of the players after the game, subject to availability.'],
+      ['Instant camera kit', 'An instant camera with three packs of film, ready to capture the holiday season.', 'Capture holiday moments you can hold in your hand. The instant camera prints credit-card-sized photos in about 90 seconds.', 'The kit includes three packs of film, a protective case, a strap and a mini album for your favourite shots.'],
+      ['Running shoes & race entry', 'A pair of cushioned running shoes in your size and an entry to a spring city run.', 'Hit the ground running in the new year with a pair of lightweight, cushioned running shoes, fitted to your size after the draw.', 'The prize also includes an entry to a 10 km city run in spring and a sports bag for your gear.'],
+      ['Wine tasting for two', 'An evening of guided wine tasting for two at a city wine bar, with seasonal small plates.', 'Spend a cosy winter evening discovering six wines from small European vineyards, guided by a sommelier.', 'The tasting comes with a board of seasonal small plates and a bottle of your favourite wine to take home. A non-alcoholic pairing is available on request.'],
+      ['Noise-cancelling headphones', 'Over-ear wireless headphones with adaptive noise cancelling and up to 30 hours of battery life.', 'Shut out the holiday noise with premium over-ear headphones. Adaptive noise cancelling adjusts to your surroundings, and a single charge lasts up to 30 hours.', 'Comes with a travel case, a USB-C cable and an audio cable for flights. Bluetooth multipoint lets you switch between your phone and laptop without re-pairing.'],
+      ['Cooking class for two', 'A hands-on evening cooking class for two with a professional chef, dinner included.', 'Spend an evening in the kitchen with a professional chef and learn to cook a three-course festive menu from scratch.', 'Classes run in small groups and finish with a shared dinner of everything you cooked, paired with drinks. The voucher is valid for six months.'],
+      ['E-reader with a year of books', 'A glare-free e-reader plus a one-year subscription to a library of thousands of titles.', 'Read anywhere, even in bright winter sun. The e-reader has a glare-free screen, adjustable warm light and weeks of battery life.', 'A twelve-month subscription gives you unlimited access to thousands of e-books and audiobooks from the first day.'],
+      ['Portable speaker', 'A waterproof Bluetooth speaker with deep bass and 20 hours of playtime.', 'Take the party anywhere with a rugged portable speaker. It is waterproof and dustproof, and it floats if it ends up in the pool.', 'Deep bass and 360-degree sound fill a room, and a full charge plays for up to 20 hours. Pair two speakers for stereo.'],
+      ['Spa day for two', 'A full day of relaxation for two: pools, saunas and a massage each.', 'Unwind after the busiest month of the year with a spa day for two. Enjoy unlimited access to the pools, saunas and relaxation rooms.', 'Each guest also gets a 50-minute massage and a healthy lunch at the spa café. The voucher can be booked on any weekday.'],
+      ['Electric scooter', 'A foldable electric scooter with a 25 km range for quick trips around the city.', 'Beat traffic with a foldable electric scooter. It reaches 25 km/h and covers up to 25 km on a single charge.', 'Puncture-resistant tyres, front and rear lights and an app for locking and tracking your rides are all included. It folds in three seconds to carry on public transport.'],
+      ['Board game collection', 'Five award-winning board games for long winter evenings with family and friends.', 'Gather everyone around the table with a collection of five award-winning board games, from quick party games to a longer strategy title.', 'The games suit 2 to 8 players and ages 10 and up, so there is something for every holiday get-together.'],
+      ['Tablet', 'An 11-inch tablet for streaming, drawing and working on the go, with a protective cover.', 'A slim 11-inch tablet with a vivid display, ideal for films, video calls and sketching on the sofa.', 'Includes 128 GB of storage, a protective folio cover and a stylus. The battery lasts a full day of mixed use.'],
+      ['Vinyl turntable', 'A belt-drive turntable with built-in preamp and three classic records to start your collection.', 'Rediscover the warmth of vinyl with a belt-drive turntable that plugs straight into speakers thanks to its built-in preamp.', 'Three classic albums are included to start your collection, and Bluetooth output lets you play records through wireless speakers or headphones.'],
+      ['Hot-air balloon flight', 'A sunrise hot-air balloon flight for two, with a celebratory toast on landing.', 'See the winter landscape from above on a hot-air balloon flight for two. Flights take off at sunrise and last around an hour.', 'Every flight ends with a traditional toast and a flight certificate. The voucher is valid for twelve months and can be booked when the weather is right.'],
+      ['Smart home starter kit', 'Smart bulbs, plugs and a hub to control your home with your voice or phone.', 'Make your home a little smarter with a starter kit of four colour bulbs, two smart plugs and a hub.', 'Set the mood for the holidays, schedule lights while you are away and control everything by voice or from one app.'],
+      ['Winter gear bundle', 'A warm parka, merino layers and insulated gloves for the coldest days of the season.', 'Stay warm on the coldest days with a complete winter bundle: a water-resistant insulated parka, a merino base layer and insulated gloves.', 'Choose your sizes after the draw. Everything is made to handle snow, wind and long walks in sub-zero temperatures.'],
+      ['Concert tickets for two', 'Two tickets to a concert of your choice next year, plus a backstage tour.', 'Pick a concert you would love to see next year and we will get you two tickets to it.', 'The prize also includes a backstage tour on the night, subject to availability at the venue. Choose your concert from a list sent to the winner.'],
+      ['Gaming console', 'The latest gaming console with an extra controller and two games.', 'Level up the holidays with the latest gaming console, ready to play straight out of the box.', 'The bundle includes a second controller for multiplayer sessions and two popular games chosen for family fun.'],
+      ['Designer backpack', 'A water-resistant backpack with a padded laptop sleeve, built for everyday commuting.', 'A minimalist backpack made from water-resistant recycled fabric, designed for daily commutes and weekend trips.', 'It fits a 16-inch laptop in a padded sleeve, has a hidden pocket for valuables and opens wide for easy packing.'],
+      ['Camera drone', 'A lightweight foldable drone that shoots 4K video and stays in the air for 30 minutes.', 'Capture winter landscapes from the sky with a foldable drone that weighs under 250 g and shoots stabilised 4K video.', 'Flight time is up to 30 minutes per battery, and smart modes follow you or orbit a subject automatically. Includes two spare batteries.'],
+      ['Gourmet Christmas hamper', 'A hamper full of festive treats: chocolates, cheeses, preserves and a bottle of bubbly.', 'Treat yourself to a hamper packed with festive delicacies from small producers: handmade chocolates, aged cheeses, preserves and biscuits.', 'It also includes a bottle of sparkling wine or a non-alcoholic alternative of your choice. Delivered to your door before Christmas Eve.'],
+      ['Fitness tracker & yoga set', 'A fitness tracker paired with a yoga mat, blocks and a 3-month online class pass.', 'Start the new year feeling good with a slim fitness tracker that monitors activity, sleep and stress.', 'The set also includes a non-slip yoga mat, two blocks and a three-month pass to online yoga and pilates classes.'],
+      ['Laptop', 'A lightweight 14-inch laptop with all-day battery life for work, study and play.', 'A thin and light 14-inch laptop with a sharp display, fast storage and battery life that lasts the whole working day.', 'It comes ready to use with the latest operating system and a protective sleeve. Perfect for work, study or streaming over the holidays.'],
+      ['Grand prize: city break for two', 'Flights and three nights in a European capital of your choice for two people.', 'The grand finale of the calendar: a city break for two to a European capital of your choice.', 'The prize covers return flights and three nights in a central four-star hotel with breakfast. Travel dates can be chosen any time next year.']
+    ];
+
+    // cards: intro + 1–24 December
+    const pad = (n) => (n < 10 ? '0' : '') + n;
+    const WD = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const cards = [];
+    for (let i = 0; i < N; i++) {
+      const day = i;
+      const wd = i ? WD[new Date(2026, 11, day).getDay()] : '';
+      const dist = Math.abs(i - index);
+      const unlocked = i >= 1 && i <= UNLOCKED, locked = i > UNLOCKED;
+      const rv = revealed[i];
+      const nudged = !!(nudge && nudge.i === i);
+      const near = dist <= 1, mid = dist <= 2;
+      cards.push({
+        near, kCls: mid ? 'kick kc' : '', cwCls: mid ? 'cw' : '', flipCls: near ? 'flip' : '',
+        frontCls: (near ? 'face' : 'face0') + (nudged ? (nudge.n % 2 ? ' sha' : ' shb') : '') + (flipped[i] && near ? ' off' : ''),
+        backCls: 'face' + (flipped[i] && near ? '' : ' off'),
+        isLocked: locked, isOpen: unlocked, isNew: unlocked && !rv, nudged,
+        btnBg: unlocked && !rv ? '#FFC94D' : '#0B0B0C', btnFg: unlocked && !rv ? '#0B0B0C' : '#fff', btnAnim: unlocked && !rv ? 'glow 2s ease-in-out infinite' : 'none',
+        showIcon: !!(rv && !flipped[i]), icon: rv ? ICONS[i - 1].src : '', iconAlt: rv ? ICONS[i - 1].alt : '',
+        ix: rv ? rv.x : 0, iy: rv ? rv.y : 0, isz: rv ? rv.w : 0, ir: rv ? rv.r : 0,
+        isIntro: i === 0, isDay: i > 0, day, wd, wdUp: wd.toUpperCase(),
+        kicker: i ? 'DAY ' + pad(day) : 'HOW IT WORKS',
+        pt: PR[i][0], ps: PR[i][1],
+        info: () => this.setState({ modal: i }),
+        left: (i + LEAD) * PITCH + PITCH / 2 - CW / 2,
+        rot: flipped[i] && near ? 180 : 0, dur: S.anim[i].dur, dl: S.anim[i].dl, kd: S.anim[i].kd,
+        sc: i === index ? 1 : 0.92, dim: i === index ? 0 : 0.4,
+        frontLabel: i ? (locked ? day + ' December, locked until ' + day + ' December' : 'Discover ' + day + ' December') : 'Flip card: How it works',
+        backLabel: i ? 'Flip back: ' + day + ' December' : 'Flip back: How it works',
+        flip: () => {
+          const cur = this.state || {};
+          const from = cur.index ?? 1;
+          const kick = i !== from ? { n: ((cur.kick || {}).n || 0) + 1, dir: i > from ? 1 : -1 } : cur.kick;
+          if (locked) {
+            const n = ((cur.nudge || {}).n || 0) + 1;
+            this.setState({ index: i, kick, nudge: { i, n } });
+            clearTimeout(this._nt);
+            this._nt = setTimeout(() => this.setState({ nudge: null }), 2300);
+            return;
+          }
+          const fl = { ...(cur.flipped || {}) };
+          fl[i] = !fl[i];
+          const rvs = { ...(cur.revealed || {}) };
+          if (unlocked && fl[i] && !rvs[i]) {
+            const ic = ICONS[i - 1];
+            // place it on a side of the card so it overlaps the date only partly and bleeds slightly past the edge
+            const w = Math.round(140 + Math.random() * 36), h = Math.round(w * ic.ar);
+            const right = Math.random() < 0.5;
+            const band = Math.floor(Math.random() * 3);
+            const rr = (a, b) => Math.round(a + Math.random() * (b - a));
+            const x = right ? rr(CW - w + 8, CW - w + 42) : rr(-42, -8);
+            const y = band === 0 ? rr(-34, 4) : band === 1 ? rr(150 - h / 2 - 20, 150 - h / 2 + 20) : rr(338 - h - 16, 338 - h);
+            rvs[i] = { w, x, y, r: rr(-14, 14) * (right ? 1 : -1) };
+          }
+          this.setState({ flipped: fl, revealed: rvs, index: i, kick });
+        }
+      });
+    }
+
+    // swipe / drag
+    const EASE = 'transform .65s cubic-bezier(.22,.8,.2,1)';
+    const kickNext = (dir) => ({ n: ((this.state || {}).kick || {}).n + 1 || 1, dir });
+    const go = (n) => {
+      const t = clamp(n);
+      if (t === index) return;
+      this.setState({ index: t, kick: kickNext(t > index ? 1 : -1) });
+    };
+    const setTilt = (deg) => { if (this.track) this.track.style.setProperty('--tilt', deg + 'deg'); };
+    const currentOffset = () => {
+      const tr = this.track;
+      if (!tr) return offsetOf(index);
+      const m = getComputedStyle(tr).transform;
+      const p = m && m.match(/matrix(3d)?\((.+)\)/);
+      if (!p) return offsetOf(index);
+      const v = p[2].split(',').map(parseFloat);
+      return -(p[1] ? v[12] : v[4]);
+    };
+    const paint = () => {
+      this.raf = 0;
+      const d = this.drag;
+      if (!d || !this.track) return;
+      this.track.style.transform = 'translateX(-' + d.off + 'px)';
+      setTilt(Math.max(-8, Math.min(8, d.v * 9)));
+    };
+    const down = (e) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      this.dragged = false;
+      const now = Date.now();
+      this.drag = { id: e.pointerId, x: e.clientX, y: e.clientY, lastX: e.clientX, lastT: now, v: 0, axis: null, from: index, start: 0, off: 0, el: e.currentTarget };
+    };
+    const move = (e) => {
+      const d = this.drag;
+      if (!d || d.id !== e.pointerId) return;
+      const dx = e.clientX - d.x, dy = e.clientY - d.y;
+      if (!d.axis) {
+        if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+        d.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+        if (d.axis !== 'x') return;
+        this.dragged = true;
+        try { d.el.setPointerCapture(e.pointerId); } catch (err) {}
+        d.start = currentOffset() + dx;
+        if (this.track) {
+          this.track.style.transition = 'none';
+          this.track.style.transform = 'translateX(-' + (d.start - dx) + 'px)';
+        }
+      }
+      if (d.axis !== 'x') return;
+      const now = Date.now();
+      const inst = (e.clientX - d.lastX) / Math.max(8, now - d.lastT);
+      d.v = d.v * 0.6 + inst * 0.4;
+      d.lastX = e.clientX; d.lastT = now;
+      let off = d.start - dx;
+      const min = offsetOf(0), max = offsetOf(N - 1);
+      if (off < min) off = min - (min - off) * 0.3;
+      if (off > max) off = max + (off - max) * 0.3;
+      d.off = off;
+      if (!this.raf) this.raf = requestAnimationFrame(paint);
+    };
+    const up = (e) => {
+      const d = this.drag;
+      if (!d || d.id !== e.pointerId) return;
+      this.drag = null;
+      if (this.raf) { cancelAnimationFrame(this.raf); this.raf = 0; }
+      if (d.axis !== 'x') return;
+      const vel = Date.now() - d.lastT > 90 ? 0 : d.v;
+      const projected = d.off - vel * 220;
+      let target = clamp(Math.round((projected - offsetOf(0)) / PITCH));
+      const moved = d.x - d.lastX;
+      if (target === d.from && Math.abs(moved) > 45) target = clamp(d.from + (moved > 0 ? 1 : -1));
+      if (this.track) {
+        this.track.style.transition = EASE;
+        this.track.style.transform = 'translateX(-' + offsetOf(target) + 'px)';
+      }
+      setTilt(0);
+      const dir = target !== d.from ? (target > d.from ? 1 : -1) : (moved > 0 ? 1 : -1);
+      this.setState({ index: target, kick: kickNext(dir) });
+    };
+    const wheel = (e) => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      this.wAcc = (this.wAcc || 0) + e.deltaX;
+      const now = Date.now();
+      if (Math.abs(this.wAcc) > 45 && now - (this.wLast || 0) > 420) {
+        const dir = this.wAcc > 0 ? 1 : -1;
+        this.wAcc = 0; this.wLast = now;
+        go(index + dir);
+      }
+    };
+    const swallow = (e) => {
+      if (this.dragged) { e.stopPropagation(); e.preventDefault(); this.dragged = false; }
+    };
+
+    const mi = st.modal;
+    const modalOpen = typeof mi === 'number';
+    let m = { kicker: '', title: '', p1: '', p2: '', details: [] };
+    if (modalOpen) {
+      const P = PR[mi];
+      const wd = mi ? WD[new Date(2026, 11, mi).getDay()] : '';
+      m = {
+        kicker: mi ? 'DAY ' + pad(mi) + ' · ' + wd.toUpperCase() + ', ' + mi + ' DECEMBER' : 'THE GOOD DEAL · HOW IT WORKS',
+        title: mi ? P[0] : 'How the advent draw works',
+        p1: P[2], p2: P[3],
+        details: P[4] ? P[4].map((d) => ({ k: d[0], v: d[1] })) : [{ k: 'Draw date', v: mi + ' December 2026' }, { k: 'Winners', v: '1' }]
+      };
+    }
+    const closeModal = () => this.setState({ modal: null });
+
+    return {
+      modalOpen, m, closeModal,
+      modalKey: (e) => { if (e.key === 'Escape') closeModal(); },
+      closeRef: (el) => { if (el && !this._focused) { this._focused = true; el.focus(); } if (!el) this._focused = false; },
+      rope: S.rope, lights: S.lights, decor: S.decor, snowBack: S.snowBack, snowFront: S.snowFront, cards,
+      trackW: T * PITCH,
+      offset: offsetOf(index),
+      trackRef: (el) => { this.track = el; },
+      down, move, up, swallow, wheel,
+      trackCls: st.kick ? (st.kick.n % 2 ? 'ka' : 'kb') + (st.kick.dir > 0 ? ' fwd' : ' bwd') : '',
+      cur: index ? index + ' December' : 'How it works', curSub: index ? ' · ' + pad(index) + ' / 24' : '', pct: r2(((index + 1) / N) * 100),
+      atStart: index <= 0, atEnd: index >= N - 1,
+      prev: () => go(index - 1), next: () => go(index + 1), home: () => go(0)
+    };
+  }
+}
+</script>
+</body>
+</html>
